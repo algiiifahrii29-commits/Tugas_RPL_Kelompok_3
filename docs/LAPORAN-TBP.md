@@ -2,7 +2,7 @@
 
 **Mata kuliah:** Rekayasa Perangkat Lunak (Pertemuan 13 & 14 – Pemeliharaan Perangkat Lunak & DevOps)
 **Proyek:** SIPSTOK Quality Distro – Sistem Informasi Pengelolaan Stok Barang pada Toko Baju
-**Kelompok:** [isi nama kelompok]
+**Kelompok:** [Kelompok 3]
 **Repository:** https://github.com/USERNAME/sipstok-quality-distro
 
 ## 1. Siapkan
