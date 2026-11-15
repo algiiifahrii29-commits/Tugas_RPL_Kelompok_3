@@ -123,11 +123,9 @@ tbody tr:hover{background:#fbfcff}
 .total-line{display:flex;justify-content:space-between;margin:7px 0;font-size:12px}.total-line.final{font-weight:800;font-size:16px;border-top:1px solid #e1e6ef;padding-top:12px;margin-top:12px}
 .report-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:17px}
 .report-card{background:#fff;border:1px solid var(--line);padding:16px;border-radius:10px}.report-card small{color:var(--muted)}.report-card strong{display:block;font:800 20px Manrope;margin-top:8px}
-.receipt{font-family:monospace;color:#222;padding:10px}.receipt h3{text-align:center;margin-bottom:4px}.receipt p{text-align:center;font-size:11px;margin-bottom:10px}.receipt table{white-space:normal}.receipt td,.receipt th{padding:6px 2px;font-size:10px}
 @media(max-width:1050px){.stats-grid{grid-template-columns:repeat(2,1fr)}.dashboard-grid{grid-template-columns:1fr}.page-content{padding:24px}}
 @media(max-width:760px){.login-page{grid-template-columns:1fr}.login-visual{display:none}.login-panel{min-height:100vh}.sidebar{transform:translateX(-100%);transition:.25s}.sidebar.open{transform:translateX(0)}.main-area{margin-left:0}.menu-toggle{display:block}.topbar{padding:0 16px;height:68px}.page-content{padding:20px 14px}.topbar-title{font-size:15px}.user-chip small{display:none}.stats-grid{gap:10px}.stat-card{padding:13px}.stat-value{font-size:20px}.page-heading{flex-direction:column}.heading-actions{width:100%}.search-input{width:100%}.toolbar-controls{width:100%}.toolbar-controls .search-input{flex:1}.cart-layout{grid-template-columns:1fr}.report-cards{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}}
 @media(max-width:420px){.stats-grid{grid-template-columns:1fr 1fr}.stat-label{font-size:10px}.stat-value{font-size:18px}.report-cards{grid-template-columns:1fr}.user-chip{gap:5px}.topbar-right{gap:7px}}
-@media print{.sidebar,.topbar,.app-footer,.page-heading .heading-actions,.table-toolbar .toolbar-controls,.no-print{display:none!important}.main-area{margin:0}.page-content{padding:0}.table-card,.panel{box-shadow:none}}
 
 
 /* ======================================================
@@ -135,7 +133,7 @@ tbody tr:hover{background:#fbfcff}
    Palet: charcoal, hitam, putih keabu-abuan, merah
    Tipografi: Montserrat + Bebas Neue
    ====================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800&display=swap');
+/* Font Montserrat & Bebas Neue dimuat lewat <link> di index.html (@import di tengah berkas diabaikan browser). */
 :root{
  --navy:#1a1a1a;--navy2:#121212;--blue:#e3000f;--blue-soft:#351719;
  --bg:#1a1a1a;--white:#202020;--text:#e0e0e0;--muted:#a0a0a0;--line:#383838;
@@ -226,8 +224,8 @@ input:focus,select:focus,textarea:focus{border-color:#e3000f;box-shadow:0 0 0 3p
 }
 
 .password-toggle:hover {
-  background: rgba(0, 0, 0, 0.06);
-  color: #222;
+  background: rgba(255, 255, 255, 0.10);
+  color: #fff;
 }
 
 .password-toggle svg {
@@ -251,4 +249,54 @@ input:focus,select:focus,textarea:focus{border-color:#e3000f;box-shadow:0 0 0 3p
 
 .password-toggle.is-visible .eye-closed {
   display: block;
+}
+
+
+/* ======================================================
+   PERBAIKAN
+   ====================================================== */
+:root{color-scheme:dark}
+option{background:#292929;color:#eee}
+.side-nav{flex:1;min-height:0}
+.stock-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- STRUK ----------
+   Struk dibuat seperti kertas putih (teks gelap di atas putih) sehingga selalu terbaca
+   di tema gelap, dan memakai font monospace. */
+.receipt-modal{width:min(420px,100%)}
+.receipt,.receipt *{font-family:"Courier New",Courier,monospace!important;letter-spacing:0!important}
+.receipt{background:#fff;color:#111;padding:18px 16px;border-radius:4px;max-width:340px;margin:0 auto;font-size:12px;line-height:1.5}
+.receipt h3{text-align:center;font-size:16px;font-weight:700;color:#111;margin-bottom:2px}
+.receipt .r-sub{text-align:center;font-size:11px;color:#333;margin-bottom:8px}
+.receipt .r-sep{border-top:1px dashed #555;margin:9px 0}
+.receipt .r-line{display:flex;justify-content:space-between;gap:12px}
+.receipt .r-line span:last-child{text-align:right}
+.receipt .r-item{margin:7px 0}
+.receipt .r-name{font-weight:700;word-break:break-word}
+.receipt .r-total{font-size:14px;font-weight:700}
+.receipt .r-thanks{text-align:center;font-size:11px;margin-top:6px;color:#333}
+
+/* ---------- CETAK (harus paling akhir) ---------- */
+@media print{
+  :root{color-scheme:light}
+  html,body,.main-area{background:#fff!important;color:#000!important}
+  .sidebar,.topbar,.app-footer,.page-heading .heading-actions,.table-toolbar .toolbar-controls,.no-print,.toast-root{display:none!important}
+  .main-area{margin:0}.page-content{padding:0;max-width:none}
+  .table-card,.panel,.report-card,.stat-card{background:#fff!important;color:#000!important;border:1px solid #bbb!important;box-shadow:none!important}
+  .page-heading h1,.panel-head h3,.table-toolbar h3,.stat-value,.report-card strong{color:#000!important}
+  .page-heading p,.report-card small,.panel-head small,.table-toolbar small{color:#444!important}
+  th{background:#eee!important;color:#000!important}
+  td{color:#000!important;border-color:#ccc!important}
+  .badge{background:#fff!important;color:#000!important;border:1px solid #999}
+  .table-scroll{overflow:visible}
+  .table-card{break-inside:auto}tr{break-inside:avoid}
+
+  /* Cetak struk: hanya kertas struk yang keluar */
+  body.print-receipt #app,body.print-receipt #loginPage{display:none!important}
+  body.print-receipt .modal-backdrop{position:static;display:block;background:none!important;padding:0}
+  body.print-receipt .modal{width:auto;max-height:none;overflow:visible;box-shadow:none;border:0;background:#fff!important;border-radius:0}
+  body.print-receipt .modal-head,body.print-receipt .modal-foot{display:none!important}
+  body.print-receipt .modal-body{padding:0}
+  body.print-receipt .receipt{width:100%;max-width:80mm;margin:0;padding:0;border-radius:0}
+  @page{margin:8mm}
 }

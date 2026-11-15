@@ -10,6 +10,26 @@
   const escapeHtml = s =>
     String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  /** Kunci tanggal LOKAL (YYYY-MM-DD). toISOString() memakai UTC sehingga tanggal bisa meleset sehari di zona WIB/WITA/WIT. */
+  function localDateKey(value) {
+    const d = value instanceof Date ? value : new Date(value);
+    if (isNaN(d.getTime())) return "";
+    const p = n => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  }
+
+  /** Kode transaksi unik berurutan per hari: TRX-YYYYMMDD-001, 002, ... */
+  function makeSaleCode(sales, date = new Date()) {
+    const prefix = `TRX-${localDateKey(date).replace(/-/g, "")}-`;
+    const max = sales.reduce((m, s) => {
+      const k = String(s.kode || "");
+      if (!k.startsWith(prefix)) return m;
+      const n = parseInt(k.slice(prefix.length), 10);
+      return n > m ? n : m;
+    }, 0);
+    return prefix + String(max + 1).padStart(3, "0");
+  }
+
   const nextId = arr => arr.reduce((m, x) => Math.max(m, Number(x.id) || 0), 0) + 1;
 
   /** Status stok: habis (<=0), menipis (<= stok minimum), selain itu tersedia. */
@@ -42,8 +62,9 @@
 
   /** Validasi form barang masuk. */
   function validateStockIn(qty, faktur, stockIns) {
-    if (!(qty > 0)) return { ok: false, message: "Jumlah harus lebih dari 0." };
-    if (stockIns.some(x => x.faktur === faktur)) return { ok: false, message: "Nomor faktur sudah pernah digunakan." };
+    if (!Number.isInteger(qty) || qty < 1) return { ok: false, message: "Jumlah harus bilangan bulat lebih dari 0." };
+    if (!String(faktur || "").trim()) return { ok: false, message: "Nomor faktur wajib diisi." };
+    if (stockIns.some(x => String(x.faktur).trim().toLowerCase() === String(faktur).trim().toLowerCase())) return { ok: false, message: "Nomor faktur sudah pernah digunakan." };
     return { ok: true };
   }
 
@@ -56,5 +77,5 @@
     return true;
   }
 
-  return { formatRupiah, escapeHtml, nextId, stockStatus, countLowStock, validateCartAdd, cartTotal, validateCheckout, validateStockIn, canAccessPage };
+  return { formatRupiah, escapeHtml, localDateKey, makeSaleCode, nextId, stockStatus, countLowStock, validateCartAdd, cartTotal, validateCheckout, validateStockIn, canAccessPage };
 });
