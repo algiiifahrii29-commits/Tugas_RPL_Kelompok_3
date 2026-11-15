@@ -30,8 +30,7 @@ jobs:
         run: npm run build
 
       - name: Automated test
-        # Sengaja dipicu error (exit code 1) atau menjalankan script yang tidak ada
-        run: npm run test-gagal
+        run: npm test
 
       - name: Simpan artefak build
         if: success()
@@ -39,5 +38,4 @@ jobs:
         with:
           name: sipstok-dist
           path: dist/
-          retention-days: 9
-          
+          retention-days: 7
