@@ -63,10 +63,10 @@ not ok 6 - validateCartAdd: jumlah tepat sama dengan stok diperbolehkan
 
 | Anggota | NIM | Peran | Tugas |
 |---------|-----|-------|-------|
-| [Nama 1] | [NIM] | Ketua / DevOps | Menulis workflow CI, mengelola repository |
-| [Nama 2] | [NIM] | Developer | Refactor `logic.js`, memperbaiki bug |
-| [Nama 3] | [NIM] | QA | Menulis unit test, mendokumentasikan run |
-| [Nama 4] | [NIM] | Dokumentasi | README, laporan |
+| [Muhamad Algifahri] | [F5512510008] | Ketua / DevOps | Menulis workflow CI, mengelola repository |
+| [Humaira Islami Risya Adam] | [F5512510006] | Developer | Refactor `logic.js`, memperbaiki bug |
+| [Rianti R. Baco] | [F5512510016] | QA | Menulis unit test, mendokumentasikan run |
+
 
 ## 6. Kesimpulan
 
