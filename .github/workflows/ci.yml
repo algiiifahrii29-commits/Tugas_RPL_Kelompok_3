@@ -30,7 +30,8 @@ jobs:
         run: npm run build
 
       - name: Automated test
-        run: npm test
+        # Sengaja dipicu error (exit code 1) atau menjalankan script yang tidak ada
+        run: npm run test-gagal
 
       - name: Simpan artefak build
         if: success()
