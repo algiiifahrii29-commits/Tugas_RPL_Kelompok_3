@@ -39,4 +39,4 @@ jobs:
         with:
           name: sipstok-dist
           path: dist/
-          retention-days: 7
+          retention-days: 8
