@@ -1,0 +1,92 @@
+
+> sipstok-quality-distro@1.0.0 test
+> node --test
+
+TAP version 13
+# Subtest: formatRupiah memformat angka ke Rupiah
+ok 1 - formatRupiah memformat angka ke Rupiah
+  ---
+  duration_ms: 15.883756
+  type: 'test'
+  ...
+# Subtest: escapeHtml menetralkan karakter berbahaya (XSS)
+ok 2 - escapeHtml menetralkan karakter berbahaya (XSS)
+  ---
+  duration_ms: 0.267884
+  type: 'test'
+  ...
+# Subtest: nextId menghasilkan id berikutnya
+ok 3 - nextId menghasilkan id berikutnya
+  ---
+  duration_ms: 0.131553
+  type: 'test'
+  ...
+# Subtest: stockStatus: habis, menipis, tersedia
+ok 4 - stockStatus: habis, menipis, tersedia
+  ---
+  duration_ms: 0.171132
+  type: 'test'
+  ...
+# Subtest: countLowStock menghitung barang di bawah/sama dengan minimum
+ok 5 - countLowStock menghitung barang di bawah/sama dengan minimum
+  ---
+  duration_ms: 0.103122
+  type: 'test'
+  ...
+# Subtest: validateCartAdd: jumlah tepat sama dengan stok diperbolehkan
+ok 6 - validateCartAdd: jumlah tepat sama dengan stok diperbolehkan
+  ---
+  duration_ms: 0.98421
+  type: 'test'
+  ...
+# Subtest: validateCartAdd: menolak jumlah melebihi stok (termasuk yang sudah di keranjang)
+ok 7 - validateCartAdd: menolak jumlah melebihi stok (termasuk yang sudah di keranjang)
+  ---
+  duration_ms: 0.183916
+  type: 'test'
+  ...
+# Subtest: validateCartAdd: menolak jumlah tidak valid dan barang kosong
+ok 8 - validateCartAdd: menolak jumlah tidak valid dan barang kosong
+  ---
+  duration_ms: 0.098993
+  type: 'test'
+  ...
+# Subtest: cartTotal menjumlahkan qty x harga
+ok 9 - cartTotal menjumlahkan qty x harga
+  ---
+  duration_ms: 0.266838
+  type: 'test'
+  ...
+# Subtest: validateCheckout menolak jika stok sudah berkurang
+ok 10 - validateCheckout menolak jika stok sudah berkurang
+  ---
+  duration_ms: 0.73172
+  type: 'test'
+  ...
+# Subtest: validateStockIn menolak jumlah <= 0 dan faktur ganda
+ok 11 - validateStockIn menolak jumlah <= 0 dan faktur ganda
+  ---
+  duration_ms: 0.209961
+  type: 'test'
+  ...
+# Subtest: canAccessPage membatasi menu berdasarkan role
+ok 12 - canAccessPage membatasi menu berdasarkan role
+  ---
+  duration_ms: 0.112817
+  type: 'test'
+  ...
+# Subtest: index.html memuat logic.js sebelum app.js
+ok 13 - index.html memuat logic.js sebelum app.js
+  ---
+  duration_ms: 0.183344
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 95.585268

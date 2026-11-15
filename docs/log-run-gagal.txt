@@ -1,0 +1,112 @@
+
+> sipstok-quality-distro@1.0.0 test
+> node --test
+
+TAP version 13
+# Subtest: formatRupiah memformat angka ke Rupiah
+ok 1 - formatRupiah memformat angka ke Rupiah
+  ---
+  duration_ms: 16.210694
+  type: 'test'
+  ...
+# Subtest: escapeHtml menetralkan karakter berbahaya (XSS)
+ok 2 - escapeHtml menetralkan karakter berbahaya (XSS)
+  ---
+  duration_ms: 0.218171
+  type: 'test'
+  ...
+# Subtest: nextId menghasilkan id berikutnya
+ok 3 - nextId menghasilkan id berikutnya
+  ---
+  duration_ms: 0.120034
+  type: 'test'
+  ...
+# Subtest: stockStatus: habis, menipis, tersedia
+ok 4 - stockStatus: habis, menipis, tersedia
+  ---
+  duration_ms: 0.139467
+  type: 'test'
+  ...
+# Subtest: countLowStock menghitung barang di bawah/sama dengan minimum
+ok 5 - countLowStock menghitung barang di bawah/sama dengan minimum
+  ---
+  duration_ms: 0.103892
+  type: 'test'
+  ...
+# Subtest: validateCartAdd: jumlah tepat sama dengan stok diperbolehkan
+not ok 6 - validateCartAdd: jumlah tepat sama dengan stok diperbolehkan
+  ---
+  duration_ms: 1.91197
+  type: 'test'
+  location: '/home/claude/sipstok-ci/tests/logic.test.js:35:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/home/claude/sipstok-ci/tests/logic.test.js:37:10)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: validateCartAdd: menolak jumlah melebihi stok (termasuk yang sudah di keranjang)
+ok 7 - validateCartAdd: menolak jumlah melebihi stok (termasuk yang sudah di keranjang)
+  ---
+  duration_ms: 0.23397
+  type: 'test'
+  ...
+# Subtest: validateCartAdd: menolak jumlah tidak valid dan barang kosong
+ok 8 - validateCartAdd: menolak jumlah tidak valid dan barang kosong
+  ---
+  duration_ms: 0.096558
+  type: 'test'
+  ...
+# Subtest: cartTotal menjumlahkan qty x harga
+ok 9 - cartTotal menjumlahkan qty x harga
+  ---
+  duration_ms: 0.256863
+  type: 'test'
+  ...
+# Subtest: validateCheckout menolak jika stok sudah berkurang
+ok 10 - validateCheckout menolak jika stok sudah berkurang
+  ---
+  duration_ms: 0.400353
+  type: 'test'
+  ...
+# Subtest: validateStockIn menolak jumlah <= 0 dan faktur ganda
+ok 11 - validateStockIn menolak jumlah <= 0 dan faktur ganda
+  ---
+  duration_ms: 0.197956
+  type: 'test'
+  ...
+# Subtest: canAccessPage membatasi menu berdasarkan role
+ok 12 - canAccessPage membatasi menu berdasarkan role
+  ---
+  duration_ms: 0.108132
+  type: 'test'
+  ...
+# Subtest: index.html memuat logic.js sebelum app.js
+ok 13 - index.html memuat logic.js sebelum app.js
+  ---
+  duration_ms: 0.205179
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 12
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 105.984272

@@ -1,0 +1,41 @@
+name: CI
+
+# Dijalankan setiap push ke branch mana pun dan setiap pull request ke main.
+on:
+  push:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    name: Build, Lint & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependensi
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Automated test
+        run: npm test
+
+      - name: Simpan artefak build
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sipstok-dist
+          path: dist/
+          retention-days: 7
